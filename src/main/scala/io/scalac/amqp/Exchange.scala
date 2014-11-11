@@ -3,16 +3,16 @@ package io.scalac.amqp
 
 object Exchange {
   /** Notification received after exchange is declared. */
-  final case class DeclareOk()
+  final case class DeclareOk() extends Method
 
   /** Notification received after exchange is deleted. */
-  final case class DeleteOk()
+  final case class DeleteOk() extends Method
 
   /** Notification received after exchange to exchange binding is added. */
-  final case class BindOk()
+  final case class BindOk() extends Method
 
   /** Notification received after exchange to exchange binding is removed. */
-  final case class UnbindOk()
+  final case class UnbindOk() extends Method
 }
 
 /** Exchanges are AMQP entities where messages are sent.

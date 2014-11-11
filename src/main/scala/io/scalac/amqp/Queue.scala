@@ -13,23 +13,23 @@ object Queue {
     /** Number of messages stored in queue. */
     messageCount: Int,
     /** Number of connected consumers. */
-    consumerCount: Int)
+    consumerCount: Int) extends Method
 
   /** Notification received after queue is deleted. */
   final case class DeleteOk(
     /** Number of messages removed together with the queue. */
-    messageCount: Int)
+    messageCount: Int) extends Method
 
   /** Notification received after queue binding is added. */
-  final case class BindOk()
+  final case class BindOk() extends Method
 
   /** Notification received after queue binding is removed. */
-  final case class UnbindOk()
+  final case class UnbindOk() extends Method
 
   /** Notification received after queue is purged. */
   final case class PurgeOk(
     /** Number of messages removed from the queue. */
-    messageCount: Int)
+    messageCount: Int) extends Method
 
   /** Setting the TTL to 0 causes messages to be expired upon reaching a queue unless
     * they can be delivered to a consumer immediately. Thus this provides an alternative

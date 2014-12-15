@@ -19,19 +19,19 @@ scalaVersion := "2.11.4"
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xfatal-warnings", "-target:jvm-1.7")
 
 libraryDependencies ++= Seq(
-  "org.reactivestreams" % "reactive-streams" % "0.4.0",
-  "com.rabbitmq" % "amqp-client" % "3.4.1",
-  "org.scala-stm" %% "scala-stm" % "0.7",
-  "com.typesafe" % "config" % "1.2.1",               // Configuration
-  "joda-time" % "joda-time" % "2.5",                 // for DateTime
-  "org.joda" % "joda-convert" % "1.7",
-  "com.typesafe.akka" %% "akka-actor" % "2.3.7",     // for ByteString
-  "com.google.guava" % "guava" % "18.0",             // for MediaType
-  "com.google.code.findbugs" % "jsr305" % "3.0.0",
-  "org.scalatest" %% "scalatest" % "2.2.1" % "test", // for TCK
-  "com.google.inject" % "guice" % "3.0" % "test",    // to make sbt happy
-  "org.reactivestreams" % "reactive-streams-tck" % "0.4.0" % "test",
-  "com.typesafe.akka" %% "akka-stream-experimental" % "0.11" % "test"
+  "org.reactivestreams"      %  "reactive-streams"         % "1.0.0.M3",
+  "com.rabbitmq"             %  "amqp-client"              % "3.4.1",
+  "org.scala-stm"            %% "scala-stm"                % "0.7",
+  "com.typesafe"             %  "config"                   % "1.2.1",           // Configuration
+  "joda-time"                %  "joda-time"                % "2.5",             // for DateTime
+  "org.joda"                 %  "joda-convert"             % "1.7",
+  "com.typesafe.akka"        %% "akka-actor"               % "2.3.7",           // for ByteString
+  "com.google.guava"         %  "guava"                    % "18.0",            // for MediaType
+  "com.google.code.findbugs" %  "jsr305"                   % "3.0.0",
+  "org.scalatest"            %% "scalatest"                % "2.2.1"    % "test", // for TCK
+  "com.google.inject"        %  "guice"                    % "3.0"      % "test", // to make sbt happy
+  "org.reactivestreams"      %  "reactive-streams-tck"     % "1.0.0.M3" % "test",
+  "com.typesafe.akka"        %% "akka-stream-experimental" % "1.0-M1"   % "test"
 )
 
 publishMavenStyle := true

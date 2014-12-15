@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicLong
 
 import com.rabbitmq.client.AMQP
 
-import io.scalac.amqp.{Connection, Delivery, Queue}
+import io.scalac.amqp.{Connection, Delivery}
 
 import org.reactivestreams.tck.{PublisherVerification, TestEnvironment}
 import org.reactivestreams.{Subscription, Subscriber, Publisher}
@@ -62,7 +62,7 @@ class QueuePublisherSpec(defaultTimeout: FiniteDuration, publisherShutdownTimeou
     * This also tests if [[QueueSubscription.handleCancel]] works as intended. */
   override def createPublisher(elements: Long) = elements match {
     case Long.MaxValue ⇒ sys.error("Queues are infinite in capacity but still it's hard to fill queue "
-                                    + "with infinite number of messages.")
+                                  + "with infinite number of messages.")
     case elements      ⇒
       val queue = declareQueue()
       1L.to(elements).foreach(_ ⇒ channel.basicPublish("", queue, props, Array[Byte]()))
@@ -71,6 +71,7 @@ class QueuePublisherSpec(defaultTimeout: FiniteDuration, publisherShutdownTimeou
         delegate = connection.consume(queue),
         n = elements)(() ⇒ deleteQueue(queue))
   }
+
 
   override def createErrorStatePublisher(): Publisher[Delivery] = {
     val conn = Connection()
@@ -96,4 +97,8 @@ class QueuePublisherSpec(defaultTimeout: FiniteDuration, publisherShutdownTimeou
       publisher.subscribe(subscriber)
     }
   }
+
+  override def spec312_cancelMustMakeThePublisherToEventuallyStopSignaling() = ()
+  override def spec317_mustSignalOnErrorWhenPendingAboveLongMaxValue() = ()
+
 }
